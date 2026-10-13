@@ -1,0 +1,23 @@
+# Normalise line endings so the repo behaves the same on Windows, macOS and Linux.
+# Without this, Git rewrites LF to CRLF on checkout here, which shows up as
+# spurious diffs and breaks the shebang-style scripts.
+
+* text=auto eol=lf
+
+# Windows scripts genuinely want CRLF.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary assets: never touch.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Auto-generated lockfile: exclude from diffs, and don't attempt textual merges.
+pnpm-lock.yaml -diff -merge

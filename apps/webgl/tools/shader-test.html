@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Motion Studio — shader diagnostics</title>
+    <style>
+      body { margin: 0; background: #0b0b0f; color: #e6e6ea; font: 12.5px/1.5 ui-monospace, monospace; }
+      #panel { position: fixed; top: 0; bottom: 0; left: 0; width: 560px; overflow: auto; padding: 16px; z-index: 10; background: #0b0b0f; }
+      #view { position: fixed; top: 0; right: 0; bottom: 0; left: 560px; }
+      h1 { font-size: 13px; margin: 0 0 10px; color: #ff8a6b; }
+      .ok { color: #52d4a8; }
+      .bad { color: #ff6b6b; }
+      pre { white-space: pre-wrap; word-break: break-word; background: #16161c; padding: 8px; border-radius: 6px; max-height: 300px; overflow: auto; }
+      canvas { display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="panel">
+      <h1>GLSL / renderer diagnostics</h1>
+      <div id="out">booting…</div>
+    </div>
+    <div id="view"></div>
+
+    <script>
+      // Plain-text mirror of every log line, readable via --dump-dom without OCR.
+      window.__diag = []
+      window.diag = function (line) {
+        window.__diag.push(line)
+        var el = document.getElementById('dom-out')
+        if (el) el.textContent = window.__diag.join('\n')
+      }
+      window.onerror = function (msg, src, line, col) {
+        window.diag('WINDOW ERROR: ' + msg + ' @ ' + src + ':' + line + ':' + col)
+      }
+      window.unhandledrejection = function (e) {
+        window.diag('UNHANDLED REJECTION: ' + (e && e.reason ? e.reason : e))
+      }
+    </script>
+
+    <script type="module" src="/tools/shader-test.js"></script>
+
+    <pre id="dom-out" style="position: fixed; left: -9999px">no output</pre>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+.vite/
+
+# pnpm's local content-addressable store. This workspace ended up with a
+# 200 MB+ store at the root; it is a cache, not source, and must never be
+# committed.
+.pnpm-store/
+
+# verification artefacts: regenerate with scripts/capture-screenshots.ps1
+screenshots/
+
+# editor / OS noise
+.DS_Store
+Thumbs.db
+*.local
+*.log
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# env
+.env
+.env.*
+!.env.example
+
+# test output
+coverage/
+playwright-report/

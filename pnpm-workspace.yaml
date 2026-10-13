@@ -1,0 +1,8 @@
+packages:
+  - "apps/*"
+
+# pnpm blocks dependency postinstall scripts by default (a good default), so the
+# ones this project genuinely needs are approved explicitly.
+# esbuild places its platform binary during install; without it Vite cannot run.
+allowBuilds:
+  esbuild: true

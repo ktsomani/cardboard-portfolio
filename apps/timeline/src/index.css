@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #08080b;
+  --color-ink-900: #0d0d11;
+  --color-ink-850: #121218;
+  --color-ink-800: #17171e;
+  --color-ink-750: #1d1d26;
+  --color-ink-700: #26262f;
+  --color-ink-600: #34343f;
+  --color-ink-500: #4a4a58;
+  --color-ink-400: #6c6c7d;
+  --color-ink-300: #9a9aab;
+  --color-ink-200: #c4c4d0;
+  --color-ink-100: #eceef2;
+
+  --color-accent: #ff5c38;
+  --color-accent-soft: #ff8a6b;
+  --color-peer-1: #6ea8ff;
+  --color-peer-2: #52d4a8;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background: var(--color-ink-950);
+    color: var(--color-ink-100);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 60%, transparent);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .panel {
+    background: linear-gradient(180deg, var(--color-ink-850), var(--color-ink-900));
+    border: 1px solid color-mix(in oklab, white 7%, transparent);
+  }
+
+  .hairline {
+    border-color: color-mix(in oklab, white 8%, transparent);
+  }
+
+  .grid-dots {
+    background-image: radial-gradient(
+      color-mix(in oklab, white 7%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+
+  .tabnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* thin custom scrollbars for track lanes */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-600) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: var(--color-ink-600);
+    border-radius: 99px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-500);
+    background-clip: content-box;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

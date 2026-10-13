@@ -1,0 +1,16 @@
+{
+  "name": "cardboard-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portfolio + three browser-craft demos for the Cardboard Founding Design Engineer application",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "preview": "pnpm -r --parallel preview"
+  },
+  "packageManager": "pnpm@11.7.0",
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
