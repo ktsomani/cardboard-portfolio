@@ -24,17 +24,38 @@ export function StatusPill({ status, note }) {
 }
 
 /**
+ * Where a demo lives.
+ *
+ * Locally each demo is its own Vite dev server on its own port. In a deployed
+ * build those ports do not exist — `localhost` would resolve to the *visitor's*
+ * machine — so production points at the deployed origins instead.
+ *
+ * Resolution order:
+ *   1. `VITE_DEMO_<ID>_URL` at build time, if set
+ *   2. `project.demoUrl` from data (the deployed Vercel origins)
+ *   3. localhost on the demo's dev port
+ */
+function demoOriginFor(project) {
+  const fromEnv = import.meta.env[`VITE_DEMO_${project.id.toUpperCase()}_URL`]
+  if (fromEnv) return String(fromEnv).replace(/\/$/, '')
+  if (project.demoUrl) return project.demoUrl.replace(/\/$/, '')
+  return `http://localhost:${project.port}`
+}
+
+const isDeployedOrigin = (url) => !url.includes('localhost')
+
+/**
  * Live demo frame.
  *
  * Mounting three React apps (two of them with WebGL canvases) on page load would
  * cost more than the page is worth, so the iframe is created on demand and the
- * poster below stands in until then. That is also why the demo runs on its own
- * origin/port rather than being bundled into this page.
+ * poster below stands in until then.
  */
 export function DemoFrame({ project }) {
   const [running, setRunning] = useState(false)
   const [key, setKey] = useState(0)
-  const url = `http://localhost:${project.port}/`
+  const url = `${demoOriginFor(project)}/`
+  const deployed = isDeployedOrigin(url)
 
   return (
     <div className="overflow-hidden rounded-[10px] border border-white/[0.08] bg-black/40">
@@ -90,7 +111,19 @@ export function DemoFrame({ project }) {
             >
               <div className="max-w-xs px-6 text-center">
                 <p className="text-[11.5px] leading-relaxed text-ink-400">
-                  The demo runs as its own app on <span className="font-mono text-ink-300">:{project.port}</span>.
+                  {deployed ? (
+                    <>
+                      Live and interactive — it runs as its own app on{' '}
+                      <span className="font-mono text-ink-300">
+                        {url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      The demo runs as its own app on{' '}
+                      <span className="font-mono text-ink-300">:{project.port}</span>.
+                    </>
+                  )}
                 </p>
                 <button
                   type="button"
@@ -100,7 +133,13 @@ export function DemoFrame({ project }) {
                   Run demo
                 </button>
                 <p className="mt-2.5 text-[10px] leading-relaxed text-ink-500">
-                  Start it with <span className="font-mono">pnpm dev</span>, or open it directly.
+                  {deployed ? (
+                    <>Embedded live · or open it full-screen ↗</>
+                  ) : (
+                    <>
+                      Start it with <span className="font-mono">pnpm dev</span>, or open it directly.
+                    </>
+                  )}
                 </p>
               </div>
             </motion.div>

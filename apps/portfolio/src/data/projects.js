@@ -54,6 +54,11 @@ export const hardProblems = [
  * status: 'in-progress' | 'working' | 'prototype'
  * `honesty` states plainly what is simulated, because a reviewer will find out
  * anyway and being wrong about it costs more than the feature is worth.
+ *
+ * `demoUrl` is the deployed origin of each demo, used in production builds. In
+ * local dev the components fall back to `localhost:<port>` so `pnpm dev` still
+ * embeds the real apps. Either can be overridden per build with
+ * `VITE_DEMO_<ID>_URL` — see .env.example.
  */
 export const projects = [
   {
@@ -61,6 +66,7 @@ export const projects = [
     name: 'Collaborative Timeline',
     subtitle: 'Browser-native NLE surface',
     port: 5181,
+    demoUrl: 'https://kartikdesign-timeline.vercel.app',
     status: 'in-progress',
     statusNote: 'day 4 of a 10-day sprint · dragging, trimming and snapping work',
     stack: ['React 19', 'Tailwind 4', 'Framer Motion', 'Pointer Events'],
@@ -99,6 +105,7 @@ export const projects = [
     name: 'Footage Search',
     subtitle: 'Multimodal retrieval + context dashboard',
     port: 5183,
+    demoUrl: 'https://kartikdesign-search.vercel.app',
     status: 'working',
     statusNote: 'deterministic local scorer · 14-clip corpus',
     stack: ['React 19', 'Framer Motion', 'Three.js', 'R3F'],
@@ -137,6 +144,7 @@ export const projects = [
     name: 'Motion Studio',
     subtitle: 'GLSL + WebGL playground',
     port: 5182,
+    demoUrl: 'https://kartikdesign-motion.vercel.app',
     status: 'working',
     statusNote: 'custom vertex + fragment shaders · 5 geometries',
     stack: ['React Three Fiber', 'GLSL', 'Three.js', 'Tailwind 4'],
