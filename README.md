@@ -207,7 +207,13 @@ Recorded because they cost real time and are not obvious:
    time never advances, so `--virtual-time-budget` never expires and `--dump-dom`
    never returns. The diagnostic harness therefore animates a bounded 90 frames.
 
-## Replacing the placeholder details
+## Contact details
 
-`apps/portfolio/src/data/projects.js` holds the profile block — name, email and
-links are placeholders and need real values before this is sent anywhere.
+`apps/portfolio/src/data/projects.js` holds the profile block — name, email,
+location and links — which drives the site header, the nav buttons and the
+footer. The resume PDF is served from `apps/portfolio/public/`.
+
+## Publishing
+
+See [GITHUB-UPLOAD.md](GITHUB-UPLOAD.md) for the exact steps to push this repo,
+including why the three projects belong in **one** repository rather than three.
