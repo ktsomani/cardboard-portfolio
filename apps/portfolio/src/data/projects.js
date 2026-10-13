@@ -22,7 +22,10 @@ export const profile = {
   ],
 }
 
-/** Shared copy for the application: the four problems Cardboard names. */
+/**
+ * The four capabilities the three demos are organised around. Each card links
+ * to the project that demonstrates it.
+ */
 export const hardProblems = [
   {
     id: 'nle',

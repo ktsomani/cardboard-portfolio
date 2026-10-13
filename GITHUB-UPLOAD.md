@@ -7,8 +7,13 @@ triggers a browser sign-in — no GitHub CLI, no personal access token.
 > **One repo, not three.** `apps/timeline`, `apps/webgl` and `apps/ai-search`
 > share a single `pnpm-lock.yaml` and a single design-token layer. Split across
 > three repositories, two of them would not install or run. They live together
-> in one monorepo, which is why the repo is named `cardboard-portfolio` and
-> contains all three.
+> in one monorepo, which is why this single repository contains all three.
+
+> **Note on the name.** The GitHub repository is called `cardboard-portfolio`,
+> after the role it was first assembled for. The code inside carries no
+> employer-specific content — it is a general design-engineering portfolio. If
+> you rename the repo on GitHub, GitHub redirects the old URL automatically, but
+> update `git remote set-url` and the Vercel project links to match.
 
 ---
 

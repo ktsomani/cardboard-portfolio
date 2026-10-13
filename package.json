@@ -1,9 +1,9 @@
 {
-  "name": "cardboard-portfolio",
+  "name": "design-engineer-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portfolio + three browser-craft demos for the Cardboard Founding Design Engineer application",
+  "description": "A design engineering portfolio plus three browser-craft demos: a timeline NLE, a GLSL motion studio, and a multimodal search dashboard",
   "scripts": {
     "dev": "pnpm -r --parallel dev",
     "build": "pnpm -r build",

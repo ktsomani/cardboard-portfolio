@@ -1,15 +1,15 @@
 # Design Engineering Portfolio — three demos + a portfolio shell
 
-A pnpm workspace of four Vite apps built as application material for the
-**Founding Design Engineer** role at Cardboard. Each demo targets one of the
-problems in their job description rather than being a generic showcase.
+A pnpm workspace of four Vite apps. Each demo takes on a hard part of building
+rich interfaces in a browser — a non-linear editor, GPU-driven graphics, and
+retrieval over footage — rather than being a generic showcase.
 
-| App | Port | What it is | Targets |
-| --- | --- | --- | --- |
-| `apps/portfolio` | 5180 | The page you read first; hosts and frames the three demos | — |
-| `apps/timeline` | 5181 | Browser-native NLE surface: drag, trim, snap, ripple, undo | browser NLE, collaboration |
-| `apps/webgl` | 5182 | Motion studio: custom GLSL vertex/fragment shaders, live controls | high-performance rendering |
-| `apps/ai-search` | 5183 | Multimodal footage search with a visible reasoning panel | multimodal understanding, context |
+| App | Port | What it is |
+| --- | --- | --- |
+| `apps/portfolio` | 5180 | The page you read first; hosts and frames the three demos |
+| `apps/timeline` | 5181 | Browser-native NLE surface: drag, trim, snap, ripple, undo |
+| `apps/webgl` | 5182 | Motion studio: custom GLSL vertex/fragment shaders, live controls |
+| `apps/ai-search` | 5183 | Multimodal footage search with a visible reasoning panel |
 
 ## Run it
 
@@ -21,10 +21,10 @@ pnpm dev          # all four, in parallel
 Or individually:
 
 ```bash
-pnpm --filter @cardboard/timeline dev
-pnpm --filter @cardboard/webgl dev
-pnpm --filter @cardboard/ai-search dev
-pnpm --filter @cardboard/portfolio dev
+pnpm --filter @portfolio/timeline dev
+pnpm --filter @portfolio/webgl dev
+pnpm --filter @portfolio/ai-search dev
+pnpm --filter @portfolio/portfolio dev
 ```
 
 Production builds: `pnpm build`. Every app builds clean and the workspace has no

@@ -80,8 +80,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl text-[30px] leading-[1.15] font-semibold tracking-[-0.02em] text-ink-100 sm:text-[40px]"
         >
-          Three demos for the four problems
-          <span className="text-ink-500"> Cardboard is actually hiring for.</span>
+          Three demos of browser craft
+          <span className="text-ink-500"> at the edges of what the DOM does well.</span>
         </motion.h1>
 
         <motion.p
@@ -93,11 +93,20 @@ export function Hero() {
           {profile.tagline}
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.16 }}
+          className="mt-8 mb-2.5 text-[10px] font-semibold tracking-[0.16em] text-ink-500 uppercase"
+        >
+          Four things these projects are about
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.18 }}
-          className="mt-7 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4"
         >
           {hardProblems.map((p, i) => (
             <motion.a
@@ -157,7 +166,7 @@ pnpm dev
             © {new Date().getFullYear()} {profile.name}
           </span>
           <span>·</span>
-          <span>Built for the Founding Design Engineer role at Cardboard</span>
+          <span>Built with React, WebGL and a lot of profiling</span>
         </div>
       </div>
     </footer>
