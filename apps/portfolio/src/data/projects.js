@@ -144,7 +144,7 @@ export const projects = [
     name: 'Motion Studio',
     subtitle: 'GLSL + WebGL playground',
     port: 5182,
-    demoUrl: 'https://kartikdesign-motion.vercel.app',
+    demoUrl: 'https://kartikdesign-webgl.vercel.app',
     status: 'working',
     statusNote: 'custom vertex + fragment shaders · 5 geometries',
     stack: ['React Three Fiber', 'GLSL', 'Three.js', 'Tailwind 4'],
