@@ -90,6 +90,21 @@ node scripts/run-scenarios.mjs [name] [--dev]   # 28 behavioural assertions in a
 powershell -ExecutionPolicy Bypass -File scripts/capture-screenshots.ps1 # load-state screenshots of all four
 ```
 
+Three more for checking the **deployed** site:
+
+```bash
+node scripts/screenshot-live.mjs <url> <out.png> [waitMs]  # screenshot with wall-clock timing
+node scripts/probe-live.mjs <url>           # find invisible-but-present elements + console errors
+node scripts/verify-embed.mjs <portfolioUrl> # prove a cross-origin demo iframe actually loads
+```
+
+`screenshot-live.mjs` deliberately avoids Chrome's `--virtual-time-budget`.
+Virtual time fast-forwards timers, which leaves animations stuck at their initial
+state — an entrance animation that starts at `opacity: 0` then renders as a
+**blank page** in the screenshot even though the DOM is correct and a visitor
+sees it fine. That produced a false "the site is broken" reading once; the
+wall-clock version reports `h1 opacity: 1` and screenshots correctly.
+
 `verify-shaders.mjs` exists because a GLSL compile error does not fail a JS
 build — it produces a blank canvas at runtime. `verify-search.mjs` asserts that
 junk queries return *nothing* rather than noise.
